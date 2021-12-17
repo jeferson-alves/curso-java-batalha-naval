@@ -53,7 +53,15 @@ public class Board extends Validation{
         }
     }
 
-    private void updateBoard(int[] position, char marking) {
+    public void updateBoard(int[] position, char marking) {
         this.board[position[0]][position[1]] = marking;
+    }
+
+    public char[][] getBoard() {
+        return board;
+    }
+
+    public char getCoordinate(int[] coordinate) {
+        return this.board[coordinate[0]][coordinate[1]];
     }
 }
