@@ -64,4 +64,9 @@ public class Board extends Validation{
     public char getCoordinate(int[] coordinate) {
         return this.board[coordinate[0]][coordinate[1]];
     }
+
+    @Override
+    boolean replayValidator(int[] coordinate, char[][] board) {
+        return board[coordinate[0]][coordinate[1]] == ' ';
+    }
 }

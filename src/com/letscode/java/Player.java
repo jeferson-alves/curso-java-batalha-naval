@@ -32,7 +32,6 @@ public class Player {
         this.ships = this.ships - 1;
     }
 
-    public static int[] cpuMove () {
 
-    }
+
 }

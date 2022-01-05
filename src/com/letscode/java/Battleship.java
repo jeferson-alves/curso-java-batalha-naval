@@ -1,7 +1,8 @@
 package com.letscode.java;
 
 public class Battleship extends Validation {
-    public static void play() {
+
+    public void play() {
         boolean restartFlag = false;
         //do {
 
@@ -16,10 +17,13 @@ public class Battleship extends Validation {
             boolean playerTurn = true;
             do {
                 if (playerTurn) {
-                    playTurn(player, cpu, inputValidator(cpu.getPlayerBoard()));
+                    System.out.println("\nPlayer Turn:");
+                    player.printPlayerBoard();
+                    playTurn(player, cpu, inputValidator(player.getPlayerBoard()));
                 } else {
-
-                    playTurn(cpu, player, inputValidator(player.getPlayerBoard()));
+                    System.out.println("\nCpu Turn:");
+                    cpu.printPlayerBoard();
+                    playTurn(cpu, player, inputValidator(cpu.getPlayerBoard()));
                 }
                 playerTurn = !playerTurn;
             } while (player.getShips() > 0 && cpu.getShips() > 0);
@@ -30,27 +34,32 @@ public class Battleship extends Validation {
 
     public static void playTurn(Player turnPlayer, Player otherPlayer, int[] coordinates) {
 
-        if (otherPlayer.getPlayerBoardCoordinate(coordinates) == ' ') {
+        if (otherPlayer.getPlayerBoardCoordinate(coordinates) == ' ' || otherPlayer.getPlayerBoardCoordinate(coordinates) == '_' || otherPlayer.getPlayerBoardCoordinate(coordinates) == '*') {
             switch (turnPlayer.getPlayerBoardCoordinate(coordinates)) {
                 case 'N':
                     turnPlayer.setPlayerBoard(coordinates, 'n');
+                    break;
                 case ' ':
-                    turnPlayer.setPlayerBoard(coordinates, '-');
+                    turnPlayer.setPlayerBoard(coordinates, '_');
+                    break;
             }
         } else {
             otherPlayer.loseAShip();
             switch (turnPlayer.getPlayerBoardCoordinate(coordinates)) {
                 case 'N':
                     turnPlayer.setPlayerBoard(coordinates, 'X');
+                    break;
                 case ' ':
                     turnPlayer.setPlayerBoard(coordinates, '*');
+                    break;
             }
         }
     }
 
     @Override
-    public boolean replayValidator(int[] coordinate, char[][] board) {
+    boolean replayValidator(int[] coordinate, char[][] board) {
         return board[coordinate[0]][coordinate[1]] == ' ' || board[coordinate[0]][coordinate[1]] == 'N';
     }
+
 
 }

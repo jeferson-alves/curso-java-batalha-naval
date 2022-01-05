@@ -2,12 +2,12 @@ package com.letscode.java;
 
 import java.util.Scanner;
 
-abstract class Validation {
+public abstract class Validation {
 
     public static final String INPUT_PLAY_PATTERN = "[aA-jJ][0-9]";
     public static final String INPUT_RESTART_PATTERN = "[sSnN]";
 
-    public static int[] inputValidator (char[][] board) {
+    public int[] inputValidator (char[][] board) {
         Scanner input = new Scanner(System.in);
         int[] coordinates = new int[2];
         String coordinate;
@@ -17,7 +17,7 @@ abstract class Validation {
                 coordinate = input.next(INPUT_PLAY_PATTERN).toLowerCase();
                 coordinates[0] = Conversor.coordinatesToIndex(coordinate.charAt(0));
                 coordinates[1] = Conversor.coordinatesToIndex(coordinate.charAt(1));
-                if (replayValidator(coordinates, board)) {
+                if (this.replayValidator(coordinates, board)) {
                     break;
                 }
                 else{
@@ -32,7 +32,5 @@ abstract class Validation {
         return coordinates;
     }
 
-    public static boolean replayValidator (int[] coordinate, char[][] board) {
-        return board[coordinate[0]][coordinate[1]] == ' ';
-    }
+    abstract boolean replayValidator (int[] coordinate, char[][] board);
 }
