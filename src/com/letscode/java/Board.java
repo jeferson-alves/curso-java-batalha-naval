@@ -55,11 +55,21 @@ public class Board extends Input{
                 }while (!replayValidator(coordinates,this.board));
             this.updateBoard(coordinates,'N');
             remainingShipCounter--;
-
         }
         System.out.println("\n\nCPU também escolheu escolheu as posições, mas é segredo! Vamos jogar...");
         System.out.println("\n\nCPU Board somente aparece para teste:"); //para teste
         printBoard();
+    }
+
+    private void playerShoot() {
+        int [] coordinates = new int[2];
+        System.out.println("\n\nSua vez de atirar - "); // terminar
+        coordinates = takeInputCoordinate(this.board);
+    }
+
+    private void cpuShoot() {
+        // implementar o tiro automático
+        System.out.println("\n\nCPU atirou...");
     }
 
     public void printBoard() {
