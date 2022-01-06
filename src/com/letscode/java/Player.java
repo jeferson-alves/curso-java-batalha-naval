@@ -4,8 +4,8 @@ public class Player {
     private Board board;
     private int ships = 10;
 
-    public Player(boolean player) {
-        this.board = new Board(player);
+    public Player(boolean isPlayer) {
+        this.board = new Board(isPlayer);
     }
 
     public void printPlayerBoard() {

@@ -2,7 +2,7 @@ package com.letscode.java;
 
 import java.util.Random;
 
-public class Board extends Validation{
+public class Board extends Input{
 
     private char[][] board = {
             {' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'},
@@ -19,27 +19,47 @@ public class Board extends Validation{
     };
 
     public Board (boolean player) {
-        printInitialBoard(player);
+        int numberOfShips = 3; //para futuramente o jogador dizer com quantos navios quer por partida, voltar para 10
+        if (player) {
+            getPlayerBoard(numberOfShips);
+        } else {
+            getCpuBoard(numberOfShips);
+        }
+    }  // construtor
+
+    private void getPlayerBoard(int numberOfShips) {
+        int remainingShipCounter = numberOfShips;
+        int [] coordinates = new int[2];
+
+        System.out.println("Olá Player, este é seu tabuleiro, escolha a posição dos seus navios: ");
+        printBoard();
+
+        while (remainingShipCounter > 0) {
+            System.out.print("\n");
+            System.out.printf("(%dº de %d navios) - ", numberOfShips-remainingShipCounter+1, numberOfShips);
+            coordinates = takeInputCoordinate(this.board);
+            this.updateBoard(coordinates,'N');
+            remainingShipCounter--;
+            printBoard();
+        }
     }
 
-    private void printInitialBoard(boolean player) {
-        int shipCounter = 10;
+    private void getCpuBoard(int numberOfShips) {
+        int remainingShipCounter = numberOfShips;
         int [] coordinates = new int[2];
         Random cpuAI = new Random();
-        while (shipCounter > 0){
-            if (player){
-                printBoard();
-                coordinates = inputValidator(this.board);
-            }
-            else {
+        while (remainingShipCounter > 0){
                 do {
                     coordinates[0] = cpuAI.nextInt(10)+1;
                     coordinates[1] = cpuAI.nextInt(10)+1;
                 }while (!replayValidator(coordinates,this.board));
-            }
             this.updateBoard(coordinates,'N');
-            shipCounter--;
+            remainingShipCounter--;
+
         }
+        System.out.println("\n\nCPU também escolheu escolheu as posições, mas é segredo! Vamos jogar...");
+        System.out.println("\n\nCPU Board somente aparece para teste:"); //para teste
+        printBoard();
     }
 
     public void printBoard() {
