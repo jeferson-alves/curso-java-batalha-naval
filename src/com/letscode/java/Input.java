@@ -22,11 +22,12 @@ public abstract class Input {
                     break;
                 }
                 else{
-                    System.out.print("Posição já inserida, insira outra coordenada: ");
+                    throw new RepeatedInput();
                 }
             } catch (InputMismatchException e){
-                System.out.println("Insira corretamente os dados no formato: LetraNumero (Ex.: H5) ");
-                System.out.print("Insira posição: ");
+                Warnings.getInvalidInputExceptionMessage();
+            } catch (RepeatedInput e) {
+                Warnings.getRepeatedInputExceptionMessage();
             }
             input.nextLine();
         }
