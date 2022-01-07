@@ -2,7 +2,7 @@ package com.letscode.java;
 
 import java.util.Random;
 
-public class Board extends Validation{
+public class Board extends Input {
 
     private char[][] board = {
             {' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'},
@@ -29,13 +29,13 @@ public class Board extends Validation{
         while (shipCounter > 0){
             if (player){
                 printBoard();
-                coordinates = inputValidator(this.board);
+                coordinates = inputCoordinate(this.board);
             }
             else {
                 do {
                     coordinates[0] = cpuAI.nextInt(10)+1;
                     coordinates[1] = cpuAI.nextInt(10)+1;
-                }while (!replayValidator(coordinates,this.board));
+                }while (!validateCoordinate(coordinates,this.board));
             }
             this.updateBoard(coordinates,'N');
             shipCounter--;
@@ -66,7 +66,7 @@ public class Board extends Validation{
     }
 
     @Override
-    boolean replayValidator(int[] coordinate, char[][] board) {
+    boolean validateCoordinate(int[] coordinate, char[][] board) {
         return board[coordinate[0]][coordinate[1]] == ' ';
     }
 }

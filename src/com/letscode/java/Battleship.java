@@ -1,6 +1,6 @@
 package com.letscode.java;
 
-public class Battleship extends Validation {
+public class Battleship extends Input {
 
     public void play() {
         boolean restartFlag = false;
@@ -19,11 +19,11 @@ public class Battleship extends Validation {
                 if (playerTurn) {
                     System.out.println("\nPlayer Turn:");
                     player.printPlayerBoard();
-                    playTurn(player, cpu, inputValidator(player.getPlayerBoard()));
+                    playTurn(player, cpu, inputCoordinate(player.getPlayerBoard()));
                 } else {
                     System.out.println("\nCpu Turn:");
                     cpu.printPlayerBoard();
-                    playTurn(cpu, player, inputValidator(cpu.getPlayerBoard()));
+                    playTurn(cpu, player, inputCoordinate(cpu.getPlayerBoard()));
                 }
                 playerTurn = !playerTurn;
             } while (player.getShips() > 0 && cpu.getShips() > 0);
@@ -57,7 +57,7 @@ public class Battleship extends Validation {
     }
 
     @Override
-    boolean replayValidator(int[] coordinate, char[][] board) {
+    boolean validateCoordinate(int[] coordinate, char[][] board) {
         return board[coordinate[0]][coordinate[1]] == ' ' || board[coordinate[0]][coordinate[1]] == 'N';
     }
 
