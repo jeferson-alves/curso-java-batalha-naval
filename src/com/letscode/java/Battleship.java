@@ -1,6 +1,9 @@
 package com.letscode.java;
 
+import java.util.Random;
+
 public class Battleship extends Input {
+    public boolean inTest = false;
 
     public void play() {
         boolean restartFlag = false;
@@ -14,47 +17,71 @@ public class Battleship extends Input {
             Player player = new Player(true);
             Player cpu = new Player(false);
 
-//            boolean playerTurn = true;
-//            do {
-//                if (playerTurn) {
-//                    System.out.println("\nPlayer Turn:");
-//                    player.printPlayerBoard();
-//                    playTurn(player, cpu, takeInputCoordinate(player.getPlayerBoard()));
-//                } else {
-//                    System.out.println("\nCpu Turn:");
-//                    cpu.printPlayerBoard();
+            boolean isPlayerTurn = true;
+            do {
+                if (isPlayerTurn) {
+                    System.out.println("\n\nPlayer Turn:");
+                    player.printPlayerBoard();
+                    System.out.print("Player, sua vez de atirar - ");
+                    playTurn(player, cpu, takeInputCoordinate(player.getPlayerBoard()));
+                    player.printPlayerBoard();
+                } else {
+                    System.out.println("\nCpu Turn:");
+                    if (inTest) {
+                        cpu.printPlayerBoard();
+                        System.out.print("CPU, sua vez de atirar - ");
+                        playTurn(cpu, player, takeInputCoordinate(cpu.getPlayerBoard()));
+                        cpu.printPlayerBoard();
+                    } else {
+                        int [] coordinates = new int[2];
+                        Random cpuAI = new Random();
+                        do {
+                            coordinates[0] = cpuAI.nextInt(10)+1;
+                            coordinates[1] = cpuAI.nextInt(10)+1;
+                        }while (!replayValidator(coordinates,cpu.getPlayerBoard()));
 //                    playTurn(cpu, player, takeInputCoordinate(cpu.getPlayerBoard()));
-//                }
-//                playerTurn = !playerTurn;
-//            } while (player.getShips() > 0 && cpu.getShips() > 0);
+                        playTurn(cpu, player, coordinates);
+                        System.out.println("CPU atirou em (mostra para teste):"); // para teste
+                        cpu.printPlayerBoard();
+                    }
 
+                }
+                isPlayerTurn = !isPlayerTurn;
+            } while (player.getShips() > 0 && cpu.getShips() > 0);
 
+            if (player.getShips() > 0) {
+                System.out.println("Parabéns, você venceu!");
+            } else {
+                System.out.println("Não foi dessa vez! CPU venceu!");
+            }
+
+        System.out.println("Fim de jogo...");
         //} while (!restartFlag);
     }
-//
-//    public static void playTurn(Player turnPlayer, Player otherPlayer, int[] coordinates) {
-//
-//        if (otherPlayer.getPlayerBoardCoordinate(coordinates) == ' ' || otherPlayer.getPlayerBoardCoordinate(coordinates) == '_' || otherPlayer.getPlayerBoardCoordinate(coordinates) == '*') {
-//            switch (turnPlayer.getPlayerBoardCoordinate(coordinates)) {
-//                case 'N':
-//                    turnPlayer.setPlayerBoard(coordinates, 'n');
-//                    break;
-//                case ' ':
-//                    turnPlayer.setPlayerBoard(coordinates, '_');
-//                    break;
-//            }
-//        } else {
-//            otherPlayer.loseAShip();
-//            switch (turnPlayer.getPlayerBoardCoordinate(coordinates)) {
-//                case 'N':
-//                    turnPlayer.setPlayerBoard(coordinates, 'X');
-//                    break;
-//                case ' ':
-//                    turnPlayer.setPlayerBoard(coordinates, '*');
-//                    break;
-//            }
-//        }
-//    }
+
+    public static void playTurn(Player turnPlayer, Player otherPlayer, int[] coordinates) {
+
+        if (otherPlayer.getPlayerBoardCoordinate(coordinates) == ' ' || otherPlayer.getPlayerBoardCoordinate(coordinates) == '_' || otherPlayer.getPlayerBoardCoordinate(coordinates) == '*') {
+            switch (turnPlayer.getPlayerBoardCoordinate(coordinates)) {
+                case 'N':
+                    turnPlayer.setPlayerBoard(coordinates, 'n');
+                    break;
+                case ' ':
+                    turnPlayer.setPlayerBoard(coordinates, '_');
+                    break;
+            }
+        } else {
+            otherPlayer.loseAShip();
+            switch (turnPlayer.getPlayerBoardCoordinate(coordinates)) {
+                case 'N':
+                    turnPlayer.setPlayerBoard(coordinates, 'X');
+                    break;
+                case ' ':
+                    turnPlayer.setPlayerBoard(coordinates, '*');
+                    break;
+            }
+        }
+    }
 
     @Override
     boolean replayValidator(int[] coordinate, char[][] board) {

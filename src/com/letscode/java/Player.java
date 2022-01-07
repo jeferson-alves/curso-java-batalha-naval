@@ -2,10 +2,10 @@ package com.letscode.java;
 
 public class Player {
     private Board board;
-    private int ships = 10;
+    private int ships = 2; //voltar para 10 - corrigir o nome para numberOfShips
 
     public Player(boolean isPlayer) {
-        this.board = new Board(isPlayer);
+        this.board = new Board(isPlayer, ships);
     }
 
     public void printPlayerBoard() {

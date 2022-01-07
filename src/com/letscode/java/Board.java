@@ -18,16 +18,16 @@ public class Board extends Input{
             {'J', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     };
 
-    public Board (boolean player) {
-        int numberOfShips = 3; //para futuramente o jogador dizer com quantos navios quer por partida, voltar para 10
+    public Board (boolean player, int numberOfShips) {
+//        int numberOfShips = 3; //para futuramente o jogador dizer com quantos navios quer por partida, voltar para 10
         if (player) {
-            getPlayerBoard(numberOfShips);
+            initialPlayerBoard(numberOfShips);
         } else {
-            getCpuBoard(numberOfShips);
+            initialCpuBoard(numberOfShips);
         }
-    }  // construtor
+    }
 
-    private void getPlayerBoard(int numberOfShips) {
+    private void initialPlayerBoard(int numberOfShips) {
         int remainingShipCounter = numberOfShips;
         int [] coordinates = new int[2];
 
@@ -44,7 +44,7 @@ public class Board extends Input{
         }
     }
 
-    private void getCpuBoard(int numberOfShips) {
+    private void initialCpuBoard(int numberOfShips) {
         int remainingShipCounter = numberOfShips;
         int [] coordinates = new int[2];
         Random cpuAI = new Random();
@@ -59,17 +59,6 @@ public class Board extends Input{
         System.out.println("\n\nCPU também escolheu escolheu as posições, mas é segredo! Vamos jogar...");
         System.out.println("\n\nCPU Board somente aparece para teste:"); //para teste
         printBoard();
-    }
-
-    private void playerShoot() {
-        int [] coordinates = new int[2];
-        System.out.println("\n\nSua vez de atirar - "); // terminar
-        coordinates = takeInputCoordinate(this.board);
-    }
-
-    private void cpuShoot() {
-        // implementar o tiro automático
-        System.out.println("\n\nCPU atirou...");
     }
 
     public void printBoard() {
