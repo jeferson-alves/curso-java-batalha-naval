@@ -1,11 +1,16 @@
 package com.letscode.java;
 
+import java.util.Random;
+
 public class Player {
+
+    public String name = "Player";
     private Board board;
-    private int ships = 10;
+    private int numberOfShips = 2;
 
     public Player(boolean player) {
-        this.board = new Board(player);
+        if (!player){ this.name = "Computer";}
+        this.board = new Board(player, this.numberOfShips);
     }
 
     public void printPlayerBoard() {
@@ -25,13 +30,20 @@ public class Player {
     }
 
     public int getShips() {
-        return ships;
+        return numberOfShips;
     }
 
     public void loseAShip() {
-        this.ships = this.ships - 1;
+        this.numberOfShips = this.numberOfShips - 1;
     }
 
-
-
+    public int[] cpuMove () {
+        Random rand = new Random();
+        int upperbound = 10;
+        int[] coordinate = new int[2];
+        coordinate[0] = rand.nextInt(upperbound) + 1;
+        coordinate[1] = rand.nextInt(upperbound) + 1;
+        System.out.printf("coordinate = %d , %d ", coordinate[0], coordinate[1]);
+        return coordinate;
+    }
 }

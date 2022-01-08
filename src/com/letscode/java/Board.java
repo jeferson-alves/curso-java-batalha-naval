@@ -18,8 +18,51 @@ public class Board extends Input {
             {'J', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     };
 
-    public Board (boolean player) {
-        printInitialBoard(player);
+//    public Board (boolean player) {
+//        printInitialBoard(player);
+//    }
+
+    public Board (boolean player, int numberOfShips) {
+//        int numberOfShips = 3; //para futuramente o jogador dizer com quantos navios quer por partida, voltar para 10
+        if (player) {
+            initialPlayerBoard(numberOfShips);
+        } else {
+            initialCpuBoard(numberOfShips);
+        }
+    }
+
+    private void initialPlayerBoard(int numberOfShips) {
+        int remainingShipCounter = numberOfShips;
+        int [] coordinates = new int[2];
+
+        System.out.println("Olá Player, este é seu tabuleiro, escolha a posição dos seus navios: ");
+        printBoard();
+
+        while (remainingShipCounter > 0) {
+            System.out.print("\n");
+            System.out.printf("(%dº de %d navios) - ", numberOfShips-remainingShipCounter+1, numberOfShips);
+            coordinates = inputCoordinate(this.board, false);
+            this.updateBoard(coordinates,'N');
+            remainingShipCounter--;
+            printBoard();
+        }
+    }
+
+    private void initialCpuBoard(int numberOfShips) {
+        int remainingShipCounter = numberOfShips;
+        int [] coordinates = new int[2];
+        Random cpuAI = new Random();
+        while (remainingShipCounter > 0){
+            do {
+                coordinates[0] = cpuAI.nextInt(10)+1;
+                coordinates[1] = cpuAI.nextInt(10)+1;
+            }while (!validateCoordinate(coordinates,this.board, false));
+            this.updateBoard(coordinates,'N');
+            remainingShipCounter--;
+        }
+        System.out.println("\n\nCPU também escolheu escolheu as posições, mas é segredo! Vamos jogar...");
+        System.out.println("\n\nCPU Board somente aparece para teste:"); //para teste
+        printBoard();
     }
 
     private void printInitialBoard(boolean player) {
@@ -29,13 +72,13 @@ public class Board extends Input {
         while (shipCounter > 0){
             if (player){
                 printBoard();
-                coordinates = inputCoordinate(this.board);
+                coordinates = inputCoordinate(this.board, false);
             }
             else {
                 do {
                     coordinates[0] = cpuAI.nextInt(10)+1;
                     coordinates[1] = cpuAI.nextInt(10)+1;
-                }while (!validateCoordinate(coordinates,this.board));
+                }while (!validateCoordinate(coordinates,this.board, false));
             }
             this.updateBoard(coordinates,'N');
             shipCounter--;
@@ -65,8 +108,5 @@ public class Board extends Input {
         return this.board[coordinate[0]][coordinate[1]];
     }
 
-    @Override
-    boolean validateCoordinate(int[] coordinate, char[][] board) {
-        return board[coordinate[0]][coordinate[1]] == ' ';
-    }
+
 }
