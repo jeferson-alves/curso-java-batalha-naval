@@ -32,15 +32,6 @@ public abstract class Input {
         return coordinates;
     }
 
-//    public int[] automaticCoordinate (Board board) {
-//        int [] coordinates = new int[2];
-//        Random cpuAI = new Random();
-//        do {
-//            coordinates[0] = cpuAI.nextInt(10)+1;
-//            coordinates[1] = cpuAI.nextInt(10)+1;
-//        } while (!replayValidator(coordinates,board));
-//        return coordinates;
-//    }
 
 
 

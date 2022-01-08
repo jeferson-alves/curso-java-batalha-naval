@@ -3,7 +3,7 @@ package com.letscode.java;
 import java.util.Random;
 
 public class Battleship extends Input {
-    public boolean inTest = false;
+    public boolean inTest = true;
 
     public void play() {
         boolean restartFlag = false;
@@ -44,7 +44,6 @@ public class Battleship extends Input {
                         System.out.println("CPU atirou em (mostra para teste):"); // para teste
                         cpu.printPlayerBoard();
                     }
-
                 }
                 isPlayerTurn = !isPlayerTurn;
             } while (player.getShips() > 0 && cpu.getShips() > 0);
