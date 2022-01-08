@@ -6,7 +6,7 @@ import java.util.Scanner;
 public abstract class Input {
 
     public static final String INPUT_PLAY_PATTERN = "[aA-jJ][0-9]";
-    public static final String INPUT_RESTART_PATTERN = "[sSnN]";
+    //public static final String INPUT_RESTART_PATTERN = "[sSnN]";
 
     public int[] inputCoordinate (char[][] board) {
         Scanner input = new Scanner(System.in);
@@ -28,6 +28,7 @@ public abstract class Input {
                 Warnings.getInvalidInputExceptionMessage();
             } catch (RepeatedInput e) {
                 Warnings.getRepeatedInputExceptionMessage();
+                //e.printStackTrace();
             }
             input.nextLine();
         }
