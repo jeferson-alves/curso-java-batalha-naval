@@ -23,19 +23,19 @@ public class Board extends Validation{
     }
 
     private void printInitialBoard(boolean player) {
-        int shipCounter = 10;
+        int shipCounter = 5;
         int [] coordinates = new int[2];
         Random cpuAI = new Random();
         while (shipCounter > 0){
             if (player){
                 printBoard();
-                coordinates = inputValidator(this.board);
+                coordinates = inputValidator(this.board, false);
             }
             else {
                 do {
                     coordinates[0] = cpuAI.nextInt(10)+1;
                     coordinates[1] = cpuAI.nextInt(10)+1;
-                }while (!replayValidator(coordinates,this.board));
+                }while (!replayValidator(coordinates, this.board, false));
             }
             this.updateBoard(coordinates,'N');
             shipCounter--;
@@ -44,12 +44,16 @@ public class Board extends Validation{
 
     public void printBoard() {
         System.out.println();
+//        System.out.println("-----------------------");
+//        System.out.printf("------- Player -------");
+//        System.out.println("-----------------------");
         for (char[] row : this.board) {
             System.out.print("|");
             for (char column : row) {
                 System.out.print(column + "|");
             }
             System.out.println();
+//            System.out.println("-----------------------");
         }
     }
 

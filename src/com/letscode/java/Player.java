@@ -1,10 +1,15 @@
 package com.letscode.java;
 
+import java.util.Random;
+
 public class Player {
+
+    public String name = "Player";
     private Board board;
-    private int ships = 10;
+    private int ships = 5;
 
     public Player(boolean player) {
+        if (!player){ this.name = "Computer";}
         this.board = new Board(player);
     }
 
@@ -32,7 +37,13 @@ public class Player {
         this.ships = this.ships - 1;
     }
 
-    public static int[] cpuMove () {
-
+    public int[] cpuMove () {
+        Random rand = new Random();
+        int upperbound = 10;
+        int[] coordinate = new int[2];
+        coordinate[0] = rand.nextInt(upperbound) + 1;
+        coordinate[1] = rand.nextInt(upperbound) + 1;
+        System.out.printf("coordinate = %d , %d ", coordinate[0], coordinate[1]);
+        return coordinate;
     }
 }
