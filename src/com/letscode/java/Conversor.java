@@ -5,25 +5,25 @@ public class Conversor {
     public static int coordinatesToIndex(char value) {
 
         switch (value) {
-            case '0': case 'A': case 'a':
+            case '0': case 'a':
                 return 1;
-            case '1': case 'B': case 'b':
+            case '1': case 'b':
                 return 2;
-            case '2': case 'C': case 'c':
+            case '2': case 'c':
                 return 3;
-            case '3': case 'D': case 'd':
+            case '3': case 'd':
                 return 4;
-            case '4': case 'E': case 'e':
+            case '4': case 'e':
                 return 5;
-            case '5': case 'F': case 'f':
+            case '5': case 'f':
                 return 6;
-            case '6': case 'G': case 'g':
+            case '6': case 'g':
                 return 7;
-            case '7': case 'H': case 'h':
+            case '7': case 'h':
                 return 8;
-            case '8': case 'I': case 'i':
+            case '8': case 'i':
                 return 9;
-            case '9': case 'J': case 'j':
+            case '9': case 'j':
                 return 10;
             default:
                 return -1;

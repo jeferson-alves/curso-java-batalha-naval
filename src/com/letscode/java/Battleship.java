@@ -3,8 +3,6 @@ package com.letscode.java;
 public class Battleship extends Input {
 
     public void play() {
-//        boolean restartFlag = false;
-        //do {
 
         showInformation();
 
@@ -24,9 +22,9 @@ public class Battleship extends Input {
                 playTurn(player, cpu, inputCoordinate(player.getPlayerBoard(), true));
             } else {
                 System.out.println("\nCpu Turn:");
-                cpu.printPlayerBoard();
+                cpu.printPlayerBoard(); // teste
                 playTurn(cpu, player, cpuMove());
-                System.out.println();
+                System.out.println(); // teste
             }
             playerTurn = !playerTurn;
         } while (player.getShips() > 0 && cpu.getShips() > 0);
@@ -39,7 +37,6 @@ public class Battleship extends Input {
         showHeadBoard(cpu);
         cpu.printPlayerBoard();
 
-        //} while (!restartFlag);
     }
 
 
@@ -73,9 +70,9 @@ public class Battleship extends Input {
 
     public static void winner(Player player, Player cpu){
         if (player.getShips() > 0){
-            System.out.println("Parabéns, Você venceu!");
+            System.out.println("Parabéns, você venceu!");
         } else {
-            System.out.println("Que pena, mas você perdeu!");
+            System.out.println("Que pena, você perdeu!");
         }
     }
 

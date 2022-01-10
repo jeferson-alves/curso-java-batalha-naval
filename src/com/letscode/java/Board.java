@@ -18,12 +18,7 @@ public class Board extends Input {
             {'J', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     };
 
-//    public Board (boolean player) {
-//        printInitialBoard(player);
-//    }
-
     public Board (boolean player, int numberOfShips) {
-//        int numberOfShips = 3; //para futuramente o jogador dizer com quantos navios quer por partida, voltar para 10
         if (player) {
             initialPlayerBoard(numberOfShips);
         } else {
@@ -66,26 +61,6 @@ public class Board extends Input {
         printBoard();
     }
 
-//    private void printInitialBoard(boolean player) {
-//        int shipCounter = 10;
-//        int [] coordinates = new int[2];
-//        Random cpuAI = new Random();
-//        while (shipCounter > 0){
-//            if (player){
-//                printBoard();
-//                coordinates = inputCoordinate(this.board, false);
-//            }
-//            else {
-//                do {
-//                    coordinates[0] = cpuAI.nextInt(10)+1;
-//                    coordinates[1] = cpuAI.nextInt(10)+1;
-//                }while (!validateCoordinate(coordinates,this.board, false));
-//            }
-//            this.updateBoard(coordinates,'N');
-//            shipCounter--;
-//        }
-//    }
-
     public void printBoard() {
         for (char[] row : this.board) {
             System.out.print("|");
@@ -107,6 +82,5 @@ public class Board extends Input {
     public char getCoordinate(int[] coordinate) {
         return this.board[coordinate[0]][coordinate[1]];
     }
-
 
 }

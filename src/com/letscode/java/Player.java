@@ -1,7 +1,5 @@
 package com.letscode.java;
 
-import java.util.Random;
-
 public class Player {
 
     public String name = "Jogador";

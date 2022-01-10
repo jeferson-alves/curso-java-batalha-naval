@@ -7,7 +7,6 @@ import java.util.Scanner;
 public abstract class Input {
 
     public static final String INPUT_PLAY_PATTERN = "[aA-jJ][0-9]";
-    //public static final String INPUT_RESTART_PATTERN = "[sSnN]";
 
     public int[] inputCoordinate (char[][] board, boolean isTurn) {
         Scanner input = new Scanner(System.in);
@@ -29,7 +28,6 @@ public abstract class Input {
                 Warnings.getInvalidInputExceptionMessage();
             } catch (RepeatedInput e) {
                 Warnings.getRepeatedInputExceptionMessage();
-                //e.printStackTrace();
             }
             input.nextLine();
         }
@@ -55,7 +53,7 @@ public abstract class Input {
         int[] coordinate = new int[2];
         coordinate[0] = rand.nextInt(upperbound) + 1;
         coordinate[1] = rand.nextInt(upperbound) + 1;
-        System.out.printf("coordinate = %d , %d ", coordinate[0], coordinate[1]);
+        System.out.printf("coordenada = %d , %d ", coordinate[0], coordinate[1]); // teste
         return coordinate;
     }
 }
