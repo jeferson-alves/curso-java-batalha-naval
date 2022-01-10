@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class Player {
 
-    public String name = "Player";
+    public String name = "Jogador";
     private Board board;
     private int numberOfShips = 2;
 
     public Player(boolean player) {
-        if (!player){ this.name = "Computer";}
+        if (!player){ this.name = "Computador";}
         this.board = new Board(player, this.numberOfShips);
     }
 
@@ -37,13 +37,6 @@ public class Player {
         this.numberOfShips = this.numberOfShips - 1;
     }
 
-    public int[] cpuMove () {
-        Random rand = new Random();
-        int upperbound = 10;
-        int[] coordinate = new int[2];
-        coordinate[0] = rand.nextInt(upperbound) + 1;
-        coordinate[1] = rand.nextInt(upperbound) + 1;
-        System.out.printf("coordinate = %d , %d ", coordinate[0], coordinate[1]);
-        return coordinate;
-    }
+    public String getName(){ return this.name; }
+
 }

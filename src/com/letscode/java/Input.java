@@ -1,6 +1,7 @@
 package com.letscode.java;
 
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public abstract class Input {
@@ -46,6 +47,15 @@ public abstract class Input {
         } else {
             return board[coordinate[0]][coordinate[1]] == ' ';
         }
+    }
 
+    public int[] cpuMove () {
+        Random rand = new Random();
+        int upperbound = 10;
+        int[] coordinate = new int[2];
+        coordinate[0] = rand.nextInt(upperbound) + 1;
+        coordinate[1] = rand.nextInt(upperbound) + 1;
+        System.out.printf("coordinate = %d , %d ", coordinate[0], coordinate[1]);
+        return coordinate;
     }
 }

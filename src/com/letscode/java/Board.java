@@ -35,7 +35,8 @@ public class Board extends Input {
         int remainingShipCounter = numberOfShips;
         int [] coordinates = new int[2];
 
-        System.out.println("Olá Player, este é seu tabuleiro, escolha a posição dos seus navios: ");
+        System.out.println("Olá Jogador, este é seu tabuleiro, escolha a posição dos seus navios: ");
+        System.out.println();
         printBoard();
 
         while (remainingShipCounter > 0) {
@@ -65,28 +66,27 @@ public class Board extends Input {
         printBoard();
     }
 
-    private void printInitialBoard(boolean player) {
-        int shipCounter = 10;
-        int [] coordinates = new int[2];
-        Random cpuAI = new Random();
-        while (shipCounter > 0){
-            if (player){
-                printBoard();
-                coordinates = inputCoordinate(this.board, false);
-            }
-            else {
-                do {
-                    coordinates[0] = cpuAI.nextInt(10)+1;
-                    coordinates[1] = cpuAI.nextInt(10)+1;
-                }while (!validateCoordinate(coordinates,this.board, false));
-            }
-            this.updateBoard(coordinates,'N');
-            shipCounter--;
-        }
-    }
+//    private void printInitialBoard(boolean player) {
+//        int shipCounter = 10;
+//        int [] coordinates = new int[2];
+//        Random cpuAI = new Random();
+//        while (shipCounter > 0){
+//            if (player){
+//                printBoard();
+//                coordinates = inputCoordinate(this.board, false);
+//            }
+//            else {
+//                do {
+//                    coordinates[0] = cpuAI.nextInt(10)+1;
+//                    coordinates[1] = cpuAI.nextInt(10)+1;
+//                }while (!validateCoordinate(coordinates,this.board, false));
+//            }
+//            this.updateBoard(coordinates,'N');
+//            shipCounter--;
+//        }
+//    }
 
     public void printBoard() {
-        System.out.println();
         for (char[] row : this.board) {
             System.out.print("|");
             for (char column : row) {
