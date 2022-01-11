@@ -57,8 +57,8 @@ public class Board extends Input {
             remainingShipCounter--;
         }
         System.out.println("\n\nCPU também escolheu escolheu as posições, mas é segredo! Vamos jogar...");
-        System.out.println("\n\nCPU Board somente aparece para teste:"); //para teste
-        printBoard();
+//        System.out.println("\n\nCPU Board somente aparece para teste:"); //para teste
+//        printBoard(); //para teste: tabuleiro do CPU no inicio do jogo
     }
 
     public void printBoard() {

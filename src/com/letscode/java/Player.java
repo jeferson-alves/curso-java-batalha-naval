@@ -4,9 +4,10 @@ public class Player {
 
     public String name = "Jogador";
     private Board board;
-    private int numberOfShips = 2;
+    private int numberOfShips;
 
-    public Player(boolean player) {
+    public Player(boolean player, int numberOfShips) {
+        this.numberOfShips = numberOfShips;
         if (!player){ this.name = "Computador";}
         this.board = new Board(player, this.numberOfShips);
     }

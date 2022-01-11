@@ -5,9 +5,10 @@ public class Battleship extends Input {
     public void play() {
 
         showInformation();
+        int numberOfShips = 10;
 
-        Player player = new Player(true);
-        Player cpu = new Player(false);
+        Player player = new Player(true, numberOfShips);
+        Player cpu = new Player(false, numberOfShips);
 
         boolean playerTurn = true;
 
@@ -15,18 +16,22 @@ public class Battleship extends Input {
                 "Vamos iniciar o jogo!");
 
         do {
-            showScoreBoard(player, cpu);
+
             if (playerTurn) {
-                System.out.println("\nPlayer Turn:");
+                System.out.println("\nTurno do jogador:");
                 player.printPlayerBoard();
                 playTurn(player, cpu, inputCoordinate(player.getPlayerBoard(), true));
+
             } else {
-                System.out.println("\nCpu Turn:");
-                cpu.printPlayerBoard(); // teste
+                System.out.println("\nCPU jogou...");
+//                cpu.printPlayerBoard(); // teste: para verificar o tabuleiro do CPU
                 playTurn(cpu, player, cpuMove());
-                System.out.println(); // teste
+
+
             }
             playerTurn = !playerTurn;
+            showScoreBoard(player, cpu);
+
         } while (player.getShips() > 0 && cpu.getShips() > 0);
 
         winner(player, cpu);
@@ -85,14 +90,17 @@ public class Battleship extends Input {
 
     public static void showHeadBoard(Player player) {
         System.out.println("\n-----------------------");
-        System.out.printf("------ %S -------\n", player.getName());
+        System.out.printf("%S\n", player.getName());
         System.out.println("-----------------------");
     }
 
     public static void showScoreBoard(Player player, Player cpu){
-        System.out.println("--------------------------------");
+        System.out.println("\n====================================================");
+        System.out.println("Placar:");
+        System.out.println("-------------Navios-------------");
         System.out.printf("------ Jogador=%d x CPU=%d -------\n", player.getShips(), cpu.getShips());
         System.out.println("--------------------------------");
+        System.out.println("\n====================================================");
     }
 
 }
