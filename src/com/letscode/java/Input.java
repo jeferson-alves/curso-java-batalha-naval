@@ -34,7 +34,7 @@ public abstract class Input {
         return coordinates;
     }
 
-    public static boolean validateCoordinate (int[] coordinate, char[][] board, boolean isTurn) {
+    public boolean validateCoordinate (int[] coordinate, char[][] board, boolean isTurn) {
         if (isTurn) {
             switch (board[coordinate[0]][coordinate[1]]) {
                 case '-': case '*': case 'n': case 'X':
