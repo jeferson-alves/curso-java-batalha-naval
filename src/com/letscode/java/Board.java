@@ -28,7 +28,7 @@ public class Board extends Input {
 
     private void initialPlayerBoard(int numberOfShips) {
         int remainingShipCounter = numberOfShips;
-        int [] coordinates = new int[2];
+        int [] coordinates;
 
         System.out.println("Olá Jogador, este é seu tabuleiro, escolha a posição dos seus navios: ");
         System.out.println();
@@ -65,7 +65,7 @@ public class Board extends Input {
         for (char[] row : this.board) {
             System.out.print("|");
             for (char column : row) {
-                System.out.print(column + "|");
+                System.out.print(" " + column + " " + "|");
             }
             System.out.println();
         }

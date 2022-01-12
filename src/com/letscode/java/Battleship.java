@@ -5,7 +5,7 @@ public class Battleship extends Input {
     public void play() {
 
         showInformation();
-        int numberOfShips = 10;
+        int numberOfShips = 2;
 
         Player player = new Player(true, numberOfShips);
         Player cpu = new Player(false, numberOfShips);
@@ -24,8 +24,9 @@ public class Battleship extends Input {
 
             } else {
                 System.out.println("\nCPU jogou...");
-//                cpu.printPlayerBoard(); // teste: para verificar o tabuleiro do CPU
-                playTurn(cpu, player, cpuMove());
+//                playTurn(cpu, player, cpuMove());
+//                playTurn(cpu, player, inputCoordinate(cpu.getPlayerBoard(), true)); // teste: entrada de coordenada manual para CPU
+                cpu.printPlayerBoard(); // teste: para verificar o tabuleiro do CPU
 
 
             }

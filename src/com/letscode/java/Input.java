@@ -53,7 +53,6 @@ public abstract class Input {
         int[] coordinate = new int[2];
         coordinate[0] = rand.nextInt(upperbound) + 1;
         coordinate[1] = rand.nextInt(upperbound) + 1;
-//        System.out.printf("coordenada = %d , %d ", coordinate[0], coordinate[1]); // teste: imprimindo coordenadas que o cpu joga
         return coordinate;
     }
 }
