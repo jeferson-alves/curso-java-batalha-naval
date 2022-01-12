@@ -65,7 +65,7 @@ public class Board extends Input {
         for (char[] row : this.board) {
             System.out.print("|");
             for (char column : row) {
-                System.out.print(column + "|");
+                System.out.print(" " + column + " " + "|");
             }
             System.out.println();
         }
