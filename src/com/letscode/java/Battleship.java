@@ -34,14 +34,13 @@ public class Battleship extends Input {
 
         } while (player.getShips() > 0 && cpu.getShips() > 0);
 
-        winner(player, cpu);
+        winner(player);
 
         showHeadBoard(player);
         player.printPlayerBoard();
 
         showHeadBoard(cpu);
         cpu.printPlayerBoard();
-
     }
 
 
@@ -50,8 +49,7 @@ public class Battleship extends Input {
         if (otherPlayer.getPlayerBoardCoordinate(coordinates) == ' ' ||
                 otherPlayer.getPlayerBoardCoordinate(coordinates) == '-' ||
                 otherPlayer.getPlayerBoardCoordinate(coordinates) == '*'
-        )
-        {
+        ) {
             switch (turnPlayer.getPlayerBoardCoordinate(coordinates)) {
                 case 'N':
                     turnPlayer.setPlayerBoard(coordinates, 'n');
@@ -73,8 +71,8 @@ public class Battleship extends Input {
         }
     }
 
-    public static void winner(Player player, Player cpu){
-        if (player.getShips() > 0){
+    public static void winner(Player player) {
+        if (player.getShips() > 0) {
             System.out.println("Parabéns, você venceu!");
         } else {
             System.out.println("Que pena, você perdeu!");
@@ -94,7 +92,7 @@ public class Battleship extends Input {
         System.out.println("-----------------------");
     }
 
-    public static void showScoreBoard(Player player, Player cpu){
+    public static void showScoreBoard(Player player, Player cpu) {
         System.out.println("\n====================================================");
         System.out.println("Placar:");
         System.out.println("-------------Navios-------------");
