@@ -34,7 +34,7 @@ public abstract class Input {
         return coordinates;
     }
 
-    public static boolean validateCoordinate (int[] coordinate, char[][] board, boolean isTurn) {
+    public boolean validateCoordinate (int[] coordinate, char[][] board, boolean isTurn) {
         if (isTurn) {
             switch (board[coordinate[0]][coordinate[1]]) {
                 case '-': case '*': case 'n': case 'X':
@@ -53,7 +53,6 @@ public abstract class Input {
         int[] coordinate = new int[2];
         coordinate[0] = rand.nextInt(upperbound) + 1;
         coordinate[1] = rand.nextInt(upperbound) + 1;
-//        System.out.printf("coordenada = %d , %d ", coordinate[0], coordinate[1]); // teste: imprimindo coordenadas que o cpu joga
         return coordinate;
     }
 }
