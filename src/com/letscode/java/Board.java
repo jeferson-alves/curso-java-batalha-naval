@@ -46,13 +46,9 @@ public class Board extends Input {
 
     private void initialCpuBoard(int numberOfShips) {
         int remainingShipCounter = numberOfShips;
-        int [] coordinates = new int[2];
-        Random cpuAI = new Random();
+        int [] coordinates;
         while (remainingShipCounter > 0){
-            do {
-                coordinates[0] = cpuAI.nextInt(10)+1;
-                coordinates[1] = cpuAI.nextInt(10)+1;
-            }while (!validateCoordinate(coordinates,this.board, false));
+            coordinates = cpuMove(this.board, false);
             this.updateBoard(coordinates,'N');
             remainingShipCounter--;
         }

@@ -24,9 +24,9 @@ public class Battleship extends Input {
 
             } else {
                 System.out.println("\nCPU jogou...");
-                playTurn(cpu, player, cpuMove());
+                playTurn(cpu, player, cpuMove(cpu.getPlayerBoard(),true));
 //                playTurn(cpu, player, inputCoordinate(cpu.getPlayerBoard(), true)); // teste: entrada de coordenada manual para CPU
-//                cpu.printPlayerBoard(); // teste: para verificar o tabuleiro do CPU
+                cpu.printPlayerBoard(); // teste: para verificar o tabuleiro do CPU
 
             }
             playerTurn = !playerTurn;
