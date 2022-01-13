@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public abstract class Input {
 
-    public static final String INPUT_PLAY_PATTERN = "[aA-jJ][0-9]";
+    public static final String INPUT_PLAY_PATTERN = "[A-Ja-j][0-9]";
 
     public int[] inputCoordinate (char[][] board, boolean isTurn) {
         Scanner input = new Scanner(System.in);
