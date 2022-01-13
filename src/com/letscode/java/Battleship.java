@@ -24,7 +24,7 @@ public class Battleship extends Input {
 
             } else {
                 System.out.println("\nCPU jogou...");
-//                playTurn(cpu, player, cpuMove());
+                playTurn(cpu, player, cpuMove(cpu.getPlayerBoard(), true));
 //                playTurn(cpu, player, inputCoordinate(cpu.getPlayerBoard(), true)); // teste: entrada de coordenada manual para CPU
                 cpu.printPlayerBoard(); // teste: para verificar o tabuleiro do CPU
 
@@ -35,7 +35,7 @@ public class Battleship extends Input {
 
         } while (player.getShips() > 0 && cpu.getShips() > 0);
 
-        winner(player, cpu);
+        winner(player);
 
         showHeadBoard(player);
         player.printPlayerBoard();
@@ -74,7 +74,7 @@ public class Battleship extends Input {
         }
     }
 
-    public static void winner(Player player, Player cpu){
+    public static void winner(Player player){
         if (player.getShips() > 0){
             System.out.println("Parabéns, você venceu!");
         } else {

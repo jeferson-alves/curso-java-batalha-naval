@@ -47,12 +47,14 @@ public abstract class Input {
         }
     }
 
-    public int[] cpuMove () {
+    public int[] cpuMove (char[][] board, boolean isTurn) {
         Random rand = new Random();
-        int upperbound = 10;
+        int upperbound = 10;// teste: diminuir o teto para numeros randomicos e facilitar o acerto do CPU
         int[] coordinate = new int[2];
-        coordinate[0] = rand.nextInt(upperbound) + 1;
-        coordinate[1] = rand.nextInt(upperbound) + 1;
+        do {
+            coordinate[0] = rand.nextInt(upperbound) + 1;
+            coordinate[1] = rand.nextInt(upperbound) + 1;
+        }while (!validateCoordinate(coordinate ,board, isTurn));
         return coordinate;
     }
 }
