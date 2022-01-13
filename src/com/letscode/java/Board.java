@@ -1,7 +1,5 @@
 package com.letscode.java;
 
-import java.util.Random;
-
 public class Board extends Input {
 
     private char[][] board = {

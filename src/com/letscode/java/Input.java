@@ -49,7 +49,7 @@ public abstract class Input {
 
     public int[] cpuMove (char[][] board, boolean isTurn) {
         Random rand = new Random();
-        int upperbound = 2;
+        int upperbound = 10;
         int[] coordinate = new int[2];
         do {
             coordinate[0] = rand.nextInt(upperbound) + 1;
